@@ -7,4 +7,4 @@ After enough you download a project and run
 
 Obs: This API only runs the GET method, passing ID by parameter
 
-Example the of URL : https://localhost:5001/api/Funcionarios/id?id=38
+#Example the of URL : https://localhost:5001/api/Funcionarios/id?id=38
