@@ -8,7 +8,7 @@ namespace WebApplication.Commands
     {
         protected SqlConnection Con;
 
-        public string stringConnection()
+        public string StringConnection()
         {
             return "Server = DESKTOP-DH4FP6N; Database=exercicio;Trusted_Connection=True;";
         }
@@ -35,13 +35,13 @@ namespace WebApplication.Commands
 
         public void OpenConnection()
         {
-            Con = new SqlConnection(stringConnection());
+            Con = new SqlConnection(StringConnection());
             Con.Open();
         }
 
         public void CloseConnection()
         {
-            Con = new SqlConnection(stringConnection());
+            Con = new SqlConnection(StringConnection());
             Con.Close();
         }
 

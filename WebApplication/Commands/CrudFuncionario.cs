@@ -15,7 +15,7 @@ namespace WebApplication.Commands
             ConnectionSql conn = new();
 
             var validaConexao = conn.Connection();
-            var connection = new SqlConnection(conn.stringConnection());
+            var connection = new SqlConnection(conn.StringConnection());
 
             if (validaConexao == "OK") 
             {
@@ -46,7 +46,7 @@ namespace WebApplication.Commands
             ConnectionSql conn = new();
 
             var validaConexao = conn.Connection();
-            var connection = new SqlConnection(conn.stringConnection());
+            var connection = new SqlConnection(conn.StringConnection());
 
             if (validaConexao == "OK")
             {
@@ -109,7 +109,7 @@ namespace WebApplication.Commands
             ConnectionSql conn = new();
 
             var validaConexao = conn.Connection();
-            var connection = new SqlConnection(conn.stringConnection());
+            var connection = new SqlConnection(conn.StringConnection());
 
             if (validaConexao.Equals("OK"))
             {
