@@ -5,27 +5,27 @@ For execute this API fist you need access this link https://drive.google.com/dri
 
 After enough you download a project and run
 
-Obs: This API only runs the GET method and PUT, passing ID by parameter and a json
-
 # Example Method GET: 
-On PostMan you need set this URL https://localhost:5001/api/Funcionarios/id?id=38, but remember that you need set the id specific, in this example it is 38.
+When running the API you will notice that you will open a swagger page in the browser, and on this screen you will have all the API methods, with their appropriate URLs.
+In this same screen, select the get method, and inform the Id, but before clicking on Try it Out.
 
 The return it is something like this: 
-{
-    "IdFuncionario": 4,
-    "Nome": "Carlos",
-    "Email": "Carlos@rediff.com",
-    "Sexo": "Masculino",
-    "Departamento": "Saude",
-    "Admissao": "09/09/2012",
-    "Salario": 4000,
-    "Cargo": "Ortopedista",
-    "Estado": "Sao Paulo"
-}
+{"IdFuncionario":2,"Nome":"Yuri","Email":"Yuri@rediff.com","Sexo":"Masculino","Departamento":"TI","Admissao":"21/09/2020","Salario":3500,"Cargo":"Analista","Estado":"Sao Paulo"}
 
 # Example Method PUT:
-URL https://localhost:5001/api/Funcionarios/jsonfuncionario/?jsonfuncionario={YOURJSON}
-
-On PostMan you need access this option "Params", then you need to put the key (jsonfuncionario), then insert in the VALUE field the json with the information to be inserted in the database, in the same format as above.
-
+On the same swagger screen, to test the PUT method you need to put a json in the same format:
+{
+    "Nome": "Name",
+    "Email": "Email",
+    "Sexo": "Sex",
+    "Departamento": "Departament",
+    "Admissao": "DateAdmission",
+    "Salario": 1000,
+    "Cargo": "Office",
+    "Estado": "State"
+}
 If no error has occurred, this return message will appear "OK"
+
+# Example Method DELETE:
+first you need to run the api, then just inform the id of the employee you want to delete
+Se nenhum erro ocorrer o retorno sera "OK - Deletado"
