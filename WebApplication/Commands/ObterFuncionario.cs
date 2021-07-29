@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using WebApplication.Interfaces;
 
@@ -8,6 +9,12 @@ namespace WebApplication.Commands
     public class ObterFuncionario : IFuncionarios
     {
         protected SqlDataReader Dr;
+
+        public bool DeleteFuncionario(int id) // Deleta funcionario pelo Id
+        {
+            throw new NotImplementedException();
+        }
+
         public string GetFuncionario(int id)
         {
             ConnectionSql conn = new();
@@ -47,7 +54,8 @@ namespace WebApplication.Commands
 
                         return null;
 
-                    } catch (Exception ex) 
+                    }
+                    catch (Exception ex)
                     {
                         return ex.Message;
                     }
@@ -63,16 +71,21 @@ namespace WebApplication.Commands
             }
 
             return validaConexao;
-        }
+        } // Seleciona funcionario pelo Id
 
-        public string PutFuncionario(string json) 
+        public List<Funcionarios> GetFuncionario()
+        {
+            throw new NotImplementedException();
+        }  // Tras todos os funcionarios da base de dados
+
+        public string PutFuncionario(string json)
         {
             ConnectionSql conn = new();
 
             var validaConexao = conn.Connection();
             var connection = new SqlConnection(conn.stringConnection());
-        
-            if(validaConexao.Equals("OK"))
+
+            if (validaConexao.Equals("OK"))
             {
                 try
                 {
@@ -116,13 +129,13 @@ namespace WebApplication.Commands
                         if (connection.State == System.Data.ConnectionState.Open) connection.Close();
                     }
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
                 {
                     return ex.Message;
                 }
             }
 
             return validaConexao;
-        }
+        } // Insere funcionario com informacoes em formato Json
     }
 }
