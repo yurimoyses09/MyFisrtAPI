@@ -10,19 +10,29 @@ namespace WebApplication.Controllers
         [Route("api/[controller]/id")]
         public string Get(int id)
         {
-            ObterFuncionario ob = new();
+            CrudFuncionario ob = new();
 
             return ob.GetFuncionario(id);
         }
+
         [HttpPut]
         [Route("api/[controller]/jsonfuncionario")]
         public string Put(string jsonfuncionario) 
         {
-            ObterFuncionario ob = new();
+            CrudFuncionario ob = new();
 
             return ob.PutFuncionario(jsonfuncionario);
             
           
+        }
+
+        [HttpDelete]
+        [Route("api/[controller]/Deletefuncionario")]
+        public string Delete(int id) 
+        {
+            CrudFuncionario ob = new();
+
+            return ob.DeleteFuncionario(id);
         }
     }
 }

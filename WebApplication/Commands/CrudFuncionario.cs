@@ -6,13 +6,39 @@ using WebApplication.Interfaces;
 
 namespace WebApplication.Commands
 {
-    public class ObterFuncionario : IFuncionarios
+    public class CrudFuncionario : IFuncionarios
     {
         protected SqlDataReader Dr;
 
-        public bool DeleteFuncionario(int id) // Deleta funcionario pelo Id
+        public string DeleteFuncionario(int id) // Deleta funcionario pelo Id
         {
-            throw new NotImplementedException();
+            ConnectionSql conn = new();
+
+            var validaConexao = conn.Connection();
+            var connection = new SqlConnection(conn.stringConnection());
+
+            if (validaConexao == "OK") 
+            {
+                SqlCommand command = new("DELETE FROM funcionarios WHERE idFuncionario = @id", connection);
+
+                try
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@id", id);
+                    var delete = command.ExecuteNonQuery();
+
+                    if (delete > 0)
+                        return validaConexao + " - Deletado";
+                    else
+                        return "Falha ao deletar";
+
+                } catch (Exception ex) 
+                {
+                    return ex.Message;
+                }
+            }
+
+            return validaConexao;
         }
 
         public string GetFuncionario(int id)
@@ -52,7 +78,7 @@ namespace WebApplication.Commands
                             return retorno = JsonFuncionario;
                         }
 
-                        return null;
+                        return "Nenhum usuario com esse Id";
 
                     }
                     catch (Exception ex)
@@ -90,7 +116,6 @@ namespace WebApplication.Commands
                 try
                 {
                     dynamic funcionario = JsonConvert.DeserializeObject<dynamic>(json);
-                    var id = funcionario["IdFuncionario"].ToString();
                     var nome = funcionario["Nome"].ToString();
                     var email = funcionario["Email"].ToString();
                     var sexo = funcionario["Sexo"].ToString();
@@ -103,9 +128,8 @@ namespace WebApplication.Commands
                     try
                     {
                         connection.Open();
-                        SqlCommand command = new("INSERT INTO funcionarios VALUES(@id, @nome, @email, @sexo, @departamento, @admissao, @salario, @cargo, @estado)", connection);
+                        SqlCommand command = new("INSERT INTO funcionarios VALUES(@nome, @email, @sexo, @departamento, @admissao, @salario, @cargo, @estado)", connection);
 
-                        command.Parameters.AddWithValue("@id", int.Parse(id));
                         command.Parameters.AddWithValue("@nome", nome);
                         command.Parameters.AddWithValue("@email", email);
                         command.Parameters.AddWithValue("@sexo", sexo);

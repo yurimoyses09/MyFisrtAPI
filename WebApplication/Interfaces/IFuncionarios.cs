@@ -6,7 +6,7 @@ namespace WebApplication.Interfaces
     {
         public string GetFuncionario(int id);
         public string PutFuncionario(string json);
-        public bool DeleteFuncionario(int id);
+        public string DeleteFuncionario(int id);
         public List<Funcionarios> GetFuncionario();
     }
 }

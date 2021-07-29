@@ -44,5 +44,6 @@ namespace WebApplication.Commands
             Con = new SqlConnection(stringConnection());
             Con.Close();
         }
+
     }
 }
