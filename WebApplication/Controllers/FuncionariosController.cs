@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
 using WebApplication.Commands;
 
 namespace WebApplication.Controllers
